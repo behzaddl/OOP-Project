@@ -1,116 +1,91 @@
 package org.example.demo1;
 
-import java.util.Scanner;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 import java.util.List;
+import java.util.Optional;
+
 public class InerLoginMenu {
-    public static void Display(User user) {
-        boolean loggedIn = true;
-        Scanner scanner = new Scanner(System.in);
-        User loggedInUser = user;
-        System.out.println("User logged in successfully!");
-        while (loggedIn) {
-            System.out.println("Menu:");
-            System.out.println("1. Start Game");
-            System.out.println("2. See Cards");
-            System.out.println("4. Store");
-            System.out.println("5. Profile");
-            System.out.println("6. Admin login");
-            System.out.println("7. History");
-            System.out.println("8. Log Out");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
 
-       /*     switch (choice) {
-                case 1:
-                    System.out.println("Choose the game mode:");
-                    System.out.println("1: 1v1 ");
-                    System.out.println("2: bet 1v1");
-                    int mode = scanner.nextInt();
-                    scanner.nextLine();
-                    if (mode == 1) {
+    public static void Display(User user, Stage primaryStage) {
+        primaryStage.setTitle("Welcome, " + user.getUsername());
 
-                        System.out.println("Please type Player2 username:");
-                        String player2Username = scanner.nextLine();
-                        System.out.println("Please type Player2 password:");
-                        String player2Password=scanner.nextLine();
-                        User user2 = User.checkUserPasswordForLogin(player2Username);
-                        if (User.checkUserName(player2Username) && User.getPassword(user2).equals(player2Password)) {
-                            GamePlay.start(loggedInUser.getUsername(), player2Username,false,0);}
-                        else{
-                            System.out.println("Player 2 password is incorrect");
-                        }
-                    } else if (mode == 2) {
-                            System.out.println("Please type Player2 username:");
-                            String player2Username = scanner.nextLine();
-                            System.out.println("Please type Player2 password:");
-                            String player2Password = scanner.nextLine();
-                            User user2 = User.checkUserPasswordForLogin(player2Username);
+        VBox vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(20, 20, 20, 20));
 
-                        if (User.checkUserName(player2Username) && User.getPassword(user2).equals(player2Password)) {
-                            System.out.println("HOW MUCH DO YOU WANT TO BET?");
-                            int bet = scanner.nextInt();
+        Label welcomeLabel = new Label("Welcome, " + user.getUsername());
+        Button startGameButton = new Button("Start Game");
+        Button seeCardsButton = new Button("See Cards");
+        Button storeButton = new Button("Store");
+        Button profileButton = new Button("Profile");
+        Button adminLoginButton = new Button("Admin Login");
+        Button historyButton = new Button("History");
+        Button logoutButton = new Button("Log Out");
 
-                            if((user.getCoins()>=bet)&&(user2.getCoins()>=bet))
-                            {
-                                GamePlay.start(loggedInUser.getUsername(), player2Username,true,bet);}
-                            else if (user.getCoins()<bet){
-                                System.out.println("Player 1 has not enough coins");
-                            }
-                            else if (user2.getCoins()<bet){
-                                System.out.println("Player 2 has not enough coins");
-                            }
-                            else {
-                                System.out.println("Both palyer dont have enough coins");
-                            }
+        startGameButton.setOnAction(e -> startGame(user));
+        seeCardsButton.setOnAction(e -> displayUserCards(user, primaryStage));
+        storeButton.setOnAction(e -> Store.displayStoreMenu(user, primaryStage));
+        profileButton.setOnAction(e -> ProfileMenu.displayProfileMenu(user, primaryStage));
+        adminLoginButton.setOnAction(e -> showAlert("Admin", "Admin functionality not implemented yet."));
+        historyButton.setOnAction(e -> showAlert("History", "History functionality not implemented yet."));
+        logoutButton.setOnAction(e -> {
+            primaryStage.close();
+            GameApp.displayLoginMenu(primaryStage);
+        });
 
-                        }
-                        else{
-                            System.out.println("Player 2 password is incorrect");
-                        }
-                    } else {
-                        System.out.println("Invalid choice. Please try again.");
-                    }
-                    break;
-                case 2:
-                    displayUserCards(loggedInUser);
-                    break;
-                case 5:
-                    ProfileMenu.displayProfileMenu(loggedInUser);
-                    break;
-                case 4:
-                    Store.displayStoreMenu(loggedInUser);
-                    break;
-                case 6:
-                    System.out.println("Please type Admin password:");
-                    String pass= scanner.nextLine();
-                    if (pass.equals("AdminAdmin"))
-                    {
-                        System.out.println("Welcome Boss");
-                        Admin.DisplayAdmin(user);
+        vbox.getChildren().addAll(
+                welcomeLabel,
+                startGameButton,
+                seeCardsButton,
+                storeButton,
+                profileButton,
+                adminLoginButton,
+                historyButton,
+                logoutButton
+        );
 
-                    }
-                    else{
-                        System.out.println("Incorrect Password");
-                    }
-                    break;
-                case 8:
-                    loggedIn = false;
-                    System.out.println("Logged out successfully.");
-                    UserMenu.displayMenu();
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-        }
-
+        Scene scene = new Scene(vbox, 400, 400);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    private static void displayUserCards(User user) {
-        System.out.println("\nYour Cards:");
+    private static void startGame(User user) {
+        ChoiceDialog<String> dialog = new ChoiceDialog<>("1v1", "1v1", "bet 1v1");
+        dialog.setTitle("Game Mode");
+        dialog.setHeaderText("Choose the game mode");
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(mode -> {
+            if (mode.equals("1v1")) {
+                // Implement the logic for 1v1 mode
+                start1v1Game(user, false, 0);
+            } else if (mode.equals("bet 1v1")) {
+                // Implement the logic for bet 1v1 mode
+                start1v1Game(user, true, 100); // Example bet amount
+            }
+        });
+    }
+
+    private static void start1v1Game(User user, boolean isBet, int betAmount) {
+        // Simplified implementation for starting the game
+        showAlert("Start Game", "Game logic not implemented yet.");
+    }
+
+    private static void displayUserCards(User user, Stage primaryStage) {
         List<Card> cards = user.getCardList();
-        CardDisplay.displayCards(cards);
-    }*/
-        }
+        CardDisplay.displayCardsInGUI(cards, primaryStage);
+    }
+
+    static void showAlert(String title, String message) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
-

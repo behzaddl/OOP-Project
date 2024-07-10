@@ -13,7 +13,7 @@ import java.security.SecureRandom;
 public class GameApp extends Application {
 
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    private static final int PASSWORD_LENGTH = 10;
+    private static final int PASSWORD_LENGTH = 8;
 
     @Override
     public void start(Stage primaryStage) {
@@ -24,7 +24,7 @@ public class GameApp extends Application {
         primaryStage.show();
     }
 
-    private Scene createMainMenuScene(Stage primaryStage) {
+    private static Scene createMainMenuScene(Stage primaryStage) {
         VBox mainMenu = new VBox();
         mainMenu.setSpacing(10);
         mainMenu.setPadding(new Insets(20, 20, 20, 20));
@@ -42,7 +42,7 @@ public class GameApp extends Application {
         return new Scene(mainMenu, 300, 200);
     }
 
-    private void displaySignUpMenu(Stage primaryStage) {
+    private static void displaySignUpMenu(Stage primaryStage) {
         GridPane signUpGrid = new GridPane();
         signUpGrid.setPadding(new Insets(10, 10, 10, 10));
         signUpGrid.setVgap(8);
@@ -84,6 +84,15 @@ public class GameApp extends Application {
         TextField securityAnswerInput = new TextField();
         GridPane.setConstraints(securityAnswerInput, 1, 6);
 
+        Button randomPasswordButton = new Button("Generate Random Password");
+        GridPane.setConstraints(randomPasswordButton, 0, 7);
+        randomPasswordButton.setOnAction(e -> {
+            String randomPassword = generateRandomPassword();
+            passwordInput.setText(randomPassword);
+            confirmPasswordInput.setText(randomPassword);
+            showAlert("Generated Random Password: " + randomPassword);
+        });
+
         Button signUpSubmitButton = new Button("Sign Up");
         GridPane.setConstraints(signUpSubmitButton, 1, 7);
 
@@ -107,10 +116,7 @@ public class GameApp extends Application {
                 return;
             }
 
-            if ("random".equals(password)) {
-                password = generateRandomPassword();
-                showAlert("Generated Random Password: " + password);
-            } else if (!User.validatePassword(password)) {
+            if (!User.validatePassword(password)) {
                 showAlert("Invalid password. Must be at least 8 characters long and include uppercase, lowercase, and a number.");
                 return;
             }
@@ -153,14 +159,27 @@ public class GameApp extends Application {
                 nicknameLabel, nicknameInput,
                 securityQuestionLabel, securityQuestionChoice,
                 securityAnswerLabel, securityAnswerInput,
-                signUpSubmitButton
+                randomPasswordButton, signUpSubmitButton
         );
 
         Scene signUpScene = new Scene(signUpGrid, 400, 400);
         primaryStage.setScene(signUpScene);
     }
 
-    private void displayLoginMenu(Stage primaryStage) {
+    private static String generateRandomPassword() {
+        SecureRandom random = new SecureRandom();
+        StringBuilder password = new StringBuilder(PASSWORD_LENGTH);
+
+        for (int i = 0; i < PASSWORD_LENGTH; i++) {
+            int index = random.nextInt(CHARACTERS.length());
+            password.append(CHARACTERS.charAt(index));
+        }
+
+        return password.toString();
+    }
+
+
+    static void displayLoginMenu(Stage primaryStage) {
         GridPane loginGrid = new GridPane();
         loginGrid.setPadding(new Insets(10, 10, 10, 10));
         loginGrid.setVgap(8);
@@ -186,9 +205,10 @@ public class GameApp extends Application {
 
             if (user != null && User.getPassword(user).equals(password)) {
                 // Successful login
-                InerLoginMenu.Display(user);
                 showAlert("Logged in successfully!");
                 primaryStage.setScene(createMainMenuScene(primaryStage));
+                InerLoginMenu.Display(user, primaryStage);
+
             } else {
                 if (user == null) {
                     showAlert("Username doesn’t exist!");
@@ -204,23 +224,12 @@ public class GameApp extends Application {
         primaryStage.setScene(loginScene);
     }
 
-    private void showAlert(String message) {
+    private static void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    private String generateRandomPassword() {
-        SecureRandom random = new SecureRandom();
-        StringBuilder password = new StringBuilder(PASSWORD_LENGTH);
-
-        for (int i = 0; i < PASSWORD_LENGTH; i++) {
-            int index = random.nextInt(CHARACTERS.length());
-            password.append(CHARACTERS.charAt(index));
-        }
-
-        return password.toString();
-    }
 
     public static void main(String[] args) {
         launch(args);

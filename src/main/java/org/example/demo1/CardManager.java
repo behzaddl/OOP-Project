@@ -1,11 +1,23 @@
 package org.example.demo1;
 
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class CardManager {
+public class CardManager extends Application {
     private static final List<Card> allCards = new ArrayList<>();
     private static final Random random = new Random();
 
@@ -164,49 +176,111 @@ public class CardManager {
         allCards.add(card);
     }
 
-    public static void displayAllCards() {
-        System.out.println("Ordinary Cards:");
+    public static void displayAllCards(Stage primaryStage) {
+        VBox vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(20, 20, 20, 20));
+
+        Label ordinaryLabel = new Label("Ordinary Cards:");
+        ListView<String> ordinaryListView = new ListView<>();
+        ObservableList<String> ordinaryItems = FXCollections.observableArrayList();
         for (Card card : allCards) {
             if (card instanceof OrdinaryCard) {
-                System.out.println(card);
+                ordinaryItems.add(card.toString());
             }
         }
+        ordinaryListView.setItems(ordinaryItems);
 
-        System.out.println("\nSpell Cards:");
+        Label spellLabel = new Label("Spell Cards:");
+        ListView<String> spellListView = new ListView<>();
+        ObservableList<String> spellItems = FXCollections.observableArrayList();
         for (Card card : allCards) {
             if (card instanceof SpellCard) {
-                System.out.println(card);
+                spellItems.add(card.toString());
             }
         }
+        spellListView.setItems(spellItems);
+
+        vbox.getChildren().addAll(ordinaryLabel, ordinaryListView, spellLabel, spellListView);
+
+        Scene scene = new Scene(vbox, 400, 600);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
-    public static void displayOrdinCards() {
-        System.out.println("Ordinary Cards:");
+
+    public static void displayCards(User user) {
+        List<Card> cards = user.getCardList();
+        CardDisplay.displayCards(cards);
+    }
+
+    public static void displayOrdinCards(Stage primaryStage) {
+        VBox vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(20, 20, 20, 20));
+
+        Label ordinaryLabel = new Label("Ordinary Cards:");
+        ListView<String> ordinaryListView = new ListView<>();
+        ObservableList<String> ordinaryItems = FXCollections.observableArrayList();
         for (Card card : allCards) {
             if (card instanceof OrdinaryCard) {
-                System.out.println(card);
+                ordinaryItems.add(card.toString());
             }
         }
+        ordinaryListView.setItems(ordinaryItems);
 
+        vbox.getChildren().addAll(ordinaryLabel, ordinaryListView);
 
+        Scene scene = new Scene(vbox, 400, 600);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    public static OrdinaryCard getOrdinaryCardByName(String cardName) {
-        Card card = getCardByName(cardName);
-        if (card instanceof OrdinaryCard) {
-            return (OrdinaryCard) card;
+    public static void displaySpells(Stage primaryStage) {
+        VBox vbox = new VBox();
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(20, 20, 20, 20));
+
+        Label spellLabel = new Label("Spell Cards:");
+        ListView<String> spellListView = new ListView<>();
+        ObservableList<String> spellItems = FXCollections.observableArrayList();
+        for (Card card : allCards) {
+            if (card instanceof SpellCard) {
+                spellItems.add(card.toString());
+            }
         }
-        return null;
+        spellListView.setItems(spellItems);
+
+        vbox.getChildren().addAll(spellLabel, spellListView);
+
+        Scene scene = new Scene(vbox, 400, 600);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    public static SpellCard getSpellCardByName(String cardName) {
-        Card card = getCardByName(cardName);
-        if (card instanceof SpellCard) {
-            return (SpellCard) card;
-        }
-        return null;
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Card Manager");
+
+        Button allCardsButton = new Button("Display All Cards");
+        allCardsButton.setOnAction(e -> displayAllCards(primaryStage));
+
+        Button ordinCardsButton = new Button("Display Ordinary Cards");
+        ordinCardsButton.setOnAction(e -> displayOrdinCards(primaryStage));
+
+        Button spellsButton = new Button("Display Spell Cards");
+        spellsButton.setOnAction(e -> displaySpells(primaryStage));
+
+        HBox hbox = new HBox();
+        hbox.setSpacing(10);
+        hbox.setPadding(new Insets(20, 20, 20, 20));
+        hbox.getChildren().addAll(allCardsButton, ordinCardsButton, spellsButton);
+
+        Scene scene = new Scene(hbox, 600, 200);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    public static void removeCard(Card card) {
-        allCards.remove(card);
+    public static void main(String[] args) {
+        launch(args);
     }
 }

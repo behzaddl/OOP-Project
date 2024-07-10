@@ -1,6 +1,5 @@
 package org.example.demo1;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -17,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class CardManager extends Application {
+public class CardManager {
     private static final List<Card> allCards = new ArrayList<>();
     private static final Random random = new Random();
 
@@ -208,11 +207,6 @@ public class CardManager extends Application {
         primaryStage.show();
     }
 
-    public static void displayCards(User user) {
-        List<Card> cards = user.getCardList();
-        CardDisplay.displayCards(cards);
-    }
-
     public static void displayOrdinCards(Stage primaryStage) {
         VBox vbox = new VBox();
         vbox.setSpacing(10);
@@ -228,59 +222,52 @@ public class CardManager extends Application {
         }
         ordinaryListView.setItems(ordinaryItems);
 
-        vbox.getChildren().addAll(ordinaryLabel, ordinaryListView);
+        vbox.getChildren().add(ordinaryLabel);
+        vbox.getChildren().add(ordinaryListView);
 
         Scene scene = new Scene(vbox, 400, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    public static void displaySpells(Stage primaryStage) {
+    public static void displayCards(User user, Stage primaryStage) {
         VBox vbox = new VBox();
         vbox.setSpacing(10);
         vbox.setPadding(new Insets(20, 20, 20, 20));
 
-        Label spellLabel = new Label("Spell Cards:");
-        ListView<String> spellListView = new ListView<>();
-        ObservableList<String> spellItems = FXCollections.observableArrayList();
-        for (Card card : allCards) {
-            if (card instanceof SpellCard) {
-                spellItems.add(card.toString());
-            }
+        Label userLabel = new Label("Cards of " + user.getUsername() + ":");
+        ListView<String> cardListView = new ListView<>();
+        ObservableList<String> cardItems = FXCollections.observableArrayList();
+        for (Card card : user.getCardList()) {
+            cardItems.add(card.toString());
         }
-        spellListView.setItems(spellItems);
+        cardListView.setItems(cardItems);
 
-        vbox.getChildren().addAll(spellLabel, spellListView);
+        vbox.getChildren().add(userLabel);
+        vbox.getChildren().add(cardListView);
 
         Scene scene = new Scene(vbox, 400, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Card Manager");
-
-        Button allCardsButton = new Button("Display All Cards");
-        allCardsButton.setOnAction(e -> displayAllCards(primaryStage));
-
-        Button ordinCardsButton = new Button("Display Ordinary Cards");
-        ordinCardsButton.setOnAction(e -> displayOrdinCards(primaryStage));
-
-        Button spellsButton = new Button("Display Spell Cards");
-        spellsButton.setOnAction(e -> displaySpells(primaryStage));
-
-        HBox hbox = new HBox();
-        hbox.setSpacing(10);
-        hbox.setPadding(new Insets(20, 20, 20, 20));
-        hbox.getChildren().addAll(allCardsButton, ordinCardsButton, spellsButton);
-
-        Scene scene = new Scene(hbox, 600, 200);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    public static OrdinaryCard getOrdinaryCardByName(String cardName) {
+        Card card = getCardByName(cardName);
+        if (card instanceof OrdinaryCard) {
+            return (OrdinaryCard) card;
+        }
+        return null;
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static SpellCard getSpellCardByName(String cardName) {
+        Card card = getCardByName(cardName);
+        if (card instanceof SpellCard) {
+            return (SpellCard) card;
+        }
+        return null;
+    }
+
+    public static void removeCard(Card card) {
+        allCards.remove(card);
     }
 }

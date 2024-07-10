@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0de93f13-6edf-48c2-993c-5d51363cd299" name="Changes" comment="Here it is just to test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/CardDisplay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/ChangeInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/ProfileMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/Store.java" afterDir="false" />
+    <list default="true" id="0de93f13-6edf-48c2-993c-5d51363cd299" name="Changes" comment="Menu Edition without specifics, Gameplay to be implemented">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/CAPTCHADialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/CAPTCHAGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/ASCIIDigits.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/CardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/CardManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/GameApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/InerLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/InerLoginMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,24 +49,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameApp.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Masterr",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Masterr&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -86,7 +83,9 @@
       <option name="presentableId" value="Default" />
       <updated>1720532535186</updated>
       <workItem from="1720532536299" duration="3644000" />
-      <workItem from="1720600204788" duration="9893000" />
+      <workItem from="1720600204788" duration="10817000" />
+      <workItem from="1720634335537" duration="1802000" />
+      <workItem from="1720646775670" duration="676000" />
     </task>
     <task id="LOCAL-00001" summary="Here it is just to test">
       <option name="closed" value="true" />
@@ -104,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720601917443</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Menu Edition without specifics, Gameplay to be implemented">
+      <option name="closed" value="true" />
+      <created>1720623554115</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720623554115</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +119,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Here it is just to test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Here it is just to test" />
+    <MESSAGE value="Menu Edition without specifics, Gameplay to be implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu Edition without specifics, Gameplay to be implemented" />
   </component>
 </project>

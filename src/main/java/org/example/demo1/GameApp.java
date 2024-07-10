@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.awt.image.BufferedImage;
 import java.security.SecureRandom;
 
 public class GameApp extends Application {
@@ -136,19 +137,20 @@ public class GameApp extends Application {
             User.addUser(user);
             CardManager.distributeCards(username);
 
-            // Handle captcha (simplified for demonstration)
-            String captcha = ASCIIDigits.generateCaptcha();
-            TextInputDialog captchaDialog = new TextInputDialog();
-            captchaDialog.setHeaderText("Please enter the number displayed:");
-            captchaDialog.setContentText(captcha);
+            BufferedImage captchaImage = CAPTCHAGenerator.generateCaptcha();
+            CAPTCHADialog captchaDialog = new CAPTCHADialog(captchaImage);
             String userInput = captchaDialog.showAndWait().orElse("");
 
-            if (captcha.equals(userInput)) {
+            // Assuming you store the generated CAPTCHA text
+            String generatedCaptchaText = extractCaptchaText(captchaImage);
+
+            if (generatedCaptchaText.equals(userInput)) {
                 showAlert("User created successfully!");
                 primaryStage.setScene(createMainMenuScene(primaryStage));
             } else {
-                showAlert("Incorrect captcha. Please try again.");
+                showAlert("Incorrect CAPTCHA. Please try again.");
             }
+
         });
 
         signUpGrid.getChildren().addAll(
@@ -176,6 +178,9 @@ public class GameApp extends Application {
         }
 
         return password.toString();
+    }
+    private static String extractCaptchaText(BufferedImage captchaImage) {
+        return CAPTCHAGenerator.getLastGeneratedText();
     }
 
 

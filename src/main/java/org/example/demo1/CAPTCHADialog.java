@@ -48,7 +48,6 @@ public class CAPTCHADialog extends Dialog<String> {
             return null;
         });
 
-        // Custom style
         Stage stage = (Stage) getDialogPane().getScene().getWindow();
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getScene().setFill(Color.TRANSPARENT);

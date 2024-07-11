@@ -165,7 +165,6 @@ public class CardManager {
         return null;
     }
 
-    // New methods to support Admin functionalities
 
     public static boolean isCardNameUnique(String cardName) {
         return getCardByName(cardName) == null;

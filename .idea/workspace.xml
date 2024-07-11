@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0de93f13-6edf-48c2-993c-5d51363cd299" name="Changes" comment="Menu Edition without specifics, Gameplay to be implemented">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Mitch_Murder_City_Wars_Tokyo_Reign.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/CardDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/CardDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/GameApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/InerLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/InerLoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/LoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/SettingsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/SettingsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Mitch_Murder_City_Wars_Tokyo_Reign_OST_sYQh5AG0rQw_136.mp3" beforeDir="false" />
+    <list default="true" id="0de93f13-6edf-48c2-993c-5d51363cd299" name="Changes" comment="Menu Edition with specifics, Gameplay to be implemented">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/CAPTCHADialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/CAPTCHADialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/CardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/CardManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/SignUpMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/SignUpMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +98,7 @@
       <workItem from="1720600204788" duration="10817000" />
       <workItem from="1720634335537" duration="1802000" />
       <workItem from="1720646775670" duration="11252000" />
-      <workItem from="1720664492238" duration="2527000" />
+      <workItem from="1720664492238" duration="2836000" />
     </task>
     <task id="LOCAL-00001" summary="Here it is just to test">
       <option name="closed" value="true" />
@@ -146,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720663329122</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Menu Edition with specifics, Gameplay to be implemented">
+      <option name="closed" value="true" />
+      <created>1720667274308</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720667274309</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +158,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Here it is just to test" />
     <MESSAGE value="Menu Edition without specifics, Gameplay to be implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu Edition without specifics, Gameplay to be implemented" />
+    <MESSAGE value="Menu Edition with specifics, Gameplay to be implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu Edition with specifics, Gameplay to be implemented" />
   </component>
 </project>

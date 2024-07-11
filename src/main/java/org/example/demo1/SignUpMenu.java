@@ -80,7 +80,6 @@ public class SignUpMenu {
             String securityQuestion = securityQuestionChoice.getValue();
             String securityAnswer = securityAnswerInput.getText();
 
-            // Perform validation and create the user
             if (!User.validateUsername(username)) {
                 showAlert("Invalid username. Only letters and numbers are allowed.");
                 return;

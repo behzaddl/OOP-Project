@@ -36,7 +36,7 @@ public class InerLoginMenu {
         historyButton.setOnAction(e -> showAlert("History", "History functionality not implemented yet."));
         logoutButton.setOnAction(e -> {
             primaryStage.close();
-            GameApp.displayLoginMenu(primaryStage);
+            LoginMenu.displayLoginMenu(primaryStage);
         });
 
         vbox.getChildren().addAll(
@@ -51,6 +51,7 @@ public class InerLoginMenu {
         );
 
         Scene scene = new Scene(vbox, 400, 400);
+        scene.getStylesheets().add(InerLoginMenu.class.getResource("/styles.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }

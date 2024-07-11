@@ -1,0 +1,48 @@
+/* styles.css */
+
+/* Define the gradient background for the root pane */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #0000ff, #800080); /* Blue to purple gradient */
+}
+
+/* Style for labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-font-family: "Arial", sans-serif; /* Change to your preferred font */
+    -fx-text-fill: white;
+}
+
+/* Style for text fields and password fields */
+.text-field, .password-field {
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial", sans-serif; /* Change to your preferred font */
+    -fx-text-fill: black;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+/* Style for buttons */
+.button {
+    -fx-font-size: 16px;
+    -fx-font-family: "Arial", sans-serif; /* Change to your preferred font */
+    -fx-text-fill: white;
+    -fx-background-color: #333399;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.button:hover {
+    -fx-background-color: #6666cc;
+}
+
+.button:pressed {
+    -fx-background-color: #9999ff;
+}
+
+/* Style for countdown label */
+.countdown-label {
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial", sans-serif; /* Change to your preferred font */
+    -fx-text-fill: white;
+}

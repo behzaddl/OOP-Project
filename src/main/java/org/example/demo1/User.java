@@ -107,6 +107,7 @@ class User implements Serializable {
         this.passwordRecoveryQuestion = question;
         this.passwordRecoveryAnswer = answer;
     }
+    public static String getPasswordRecoveryQuestion(User user){ return user.passwordRecoveryQuestion;}
 
     public static boolean validateUsername(String username) {
         return Pattern.matches("^[a-zA-Z0-9]+$", username);

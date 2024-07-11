@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import static org.example.demo1.LoginMenu.backgroundMusicPlayer;
+
 public class GameApp extends Application {
 
     @Override
@@ -32,7 +34,7 @@ public class GameApp extends Application {
         signUpButton.setOnAction(e -> SignUpMenu.displaySignUpMenu(primaryStage));
         loginButton.setOnAction(e -> LoginMenu.displayLoginMenu(primaryStage));
         exitButton.setOnAction(e -> primaryStage.close());
-        settingButton.setOnAction(e -> SettingsMenu.displaySettingsMenu(primaryStage, mainMenu.getScene()));
+        settingButton.setOnAction(e -> SettingsMenu.displaySettingsMenu(primaryStage, mainMenu.getScene(), backgroundMusicPlayer));
 
         mainMenu.getChildren().addAll(signUpButton, loginButton, exitButton, settingButton);
 

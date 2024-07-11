@@ -79,7 +79,7 @@ public class InerLoginMenu {
 
     private static void displayUserCards(User user, Stage primaryStage) {
         List<Card> cards = user.getCardList();
-        CardDisplay.displayCardsInGUI(cards, primaryStage);
+        CardDisplay.displayCardsInGUI(cards, primaryStage, user, primaryStage);
     }
 
     static void showAlert(String title, String message) {

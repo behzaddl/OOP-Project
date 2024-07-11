@@ -3,6 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -71,7 +72,8 @@ public class CardDisplay {
         }
     }
 
-    public static void displayCardsInGUI(List<Card> cards, Stage stage) {
+
+    public static void displayCardsInGUI(List<Card> cards, Stage stage, User user, Stage primaryStage) {
         VBox vbox = new VBox();
         vbox.setSpacing(10);
         vbox.setPadding(new Insets(20, 20, 20, 20));
@@ -85,7 +87,10 @@ public class CardDisplay {
         }
         listView.setItems(items);
 
-        vbox.getChildren().add(listView);
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> InerLoginMenu.Display(user, primaryStage));
+
+        vbox.getChildren().addAll(listView, backButton);
         Scene scene = new Scene(vbox, 400, 600);
         stage.setScene(scene);
         stage.show();
@@ -113,7 +118,10 @@ public class CardDisplay {
         }
         listView.setItems(items);
 
-        vbox.getChildren().add(listView);
+        Button backButton = new Button("Back");
+        backButton.setOnAction(e -> stage.close());
+
+        vbox.getChildren().addAll(listView, backButton);
         Scene scene = new Scene(vbox, 400, 600);
         stage.setScene(scene);
         stage.show();

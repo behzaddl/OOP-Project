@@ -5,12 +5,15 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import static org.example.demo1.LoginMenu.backgroundMusicPlayer;
+
 public class SettingsMenu {
 
-    public static void displaySettingsMenu(Stage primaryStage, Scene previousScene/*, MediaPlayer backgroundMusicPlayer*/) {
+    public static void displaySettingsMenu(Stage primaryStage, Scene previousScene, MediaPlayer backgroundMusicPlayer) {
         primaryStage.setTitle("Settings");
 
         VBox vbox = new VBox();
@@ -23,15 +26,15 @@ public class SettingsMenu {
         themeComboBox.setValue("Default");
 
         Label volumeLabel = new Label("Volume:");
-        // Slider volumeSlider = new Slider(0, 1, backgroundMusicPlayer.getVolume());
+         Slider volumeSlider = new Slider(0, 1, backgroundMusicPlayer.getVolume());
 
-        Button play3MinutesAheadButton = new Button("Play 3 Minutes Ahead");
-        Button play3MinutesBackButton = new Button("Play 3 Minutes Back");
+        Button play3MinutesAheadButton = new Button("Next Song");
+        Button play3MinutesBackButton = new Button("Last Song");
 
         Button saveButton = new Button("Save");
         Button cancelButton = new Button("Cancel");
 
-        vbox.getChildren().addAll(themeLabel, themeComboBox, volumeLabel, /*volumeSlider,*/ play3MinutesAheadButton, play3MinutesBackButton, saveButton, cancelButton);
+        vbox.getChildren().addAll(themeLabel, themeComboBox, volumeLabel, volumeSlider, play3MinutesAheadButton, play3MinutesBackButton, saveButton, cancelButton);
 
         Scene scene = new Scene(vbox, 300, 250);
 
@@ -48,13 +51,13 @@ public class SettingsMenu {
                 LoginMenu.setCurrentStyle("default");
             }
             LoginMenu.setStyleSheet(previousScene, LoginMenu.getCurrentStyle());
-            //  backgroundMusicPlayer.setVolume(volumeSlider.getValue());
+            backgroundMusicPlayer.setVolume(volumeSlider.getValue());
             primaryStage.setScene(previousScene);
         });
 
         cancelButton.setOnAction(e -> primaryStage.setScene(previousScene));
 
-     /*   play3MinutesAheadButton.setOnAction(e -> {
+        play3MinutesAheadButton.setOnAction(e -> {
             double currentTime = backgroundMusicPlayer.getCurrentTime().toSeconds();
             backgroundMusicPlayer.seek(Duration.seconds(currentTime + 180));
         });
@@ -62,7 +65,7 @@ public class SettingsMenu {
         play3MinutesBackButton.setOnAction(e -> {
             double currentTime = backgroundMusicPlayer.getCurrentTime().toSeconds();
             backgroundMusicPlayer.seek(Duration.seconds(Math.max(0, currentTime - 180)));
-        });*/
+        });
     }
 }
 

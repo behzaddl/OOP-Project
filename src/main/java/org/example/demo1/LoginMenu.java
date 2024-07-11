@@ -9,8 +9,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-//import javafx.scene.media.Media;
-//import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 import java.net.URL;
@@ -23,7 +23,7 @@ public class LoginMenu {
     private static final int WAIT_TIME_SECONDS = 10;
     private static int remainingWaitTime = WAIT_TIME_SECONDS;
     private static String currentStyle = "default";
-   // private static MediaPlayer backgroundMusicPlayer;
+    static MediaPlayer backgroundMusicPlayer;
 
     public static void displayLoginMenu(Stage primaryStage) {
         primaryStage.setTitle("Login");
@@ -62,8 +62,8 @@ public class LoginMenu {
 
         loginButton.setOnAction(e -> handleLogin(primaryStage, usernameField.getText(), passwordField.getText(), loginButton, countdownLabel));
         recoverPasswordButton.setOnAction(e -> handlePasswordRecovery(primaryStage));
-
-       // playBackgroundMusic();
+        settingsButton.setOnAction(e -> SettingsMenu.displaySettingsMenu(primaryStage, scene, backgroundMusicPlayer));
+        playBackgroundMusic();
     }
 
     private static void handleLogin(Stage primaryStage, String username, String password, Button loginButton, Label countdownLabel) {
@@ -151,14 +151,14 @@ public class LoginMenu {
         }
     }
 
- /*   private static void playBackgroundMusic() {
+    private static void playBackgroundMusic() {
         if (backgroundMusicPlayer == null) {
-            Media sound = new Media(LoginMenu.class.getResource("/background.mp3").toExternalForm());
+            Media sound = new Media(LoginMenu.class.getResource("/Mitch_Murder_City_Wars_Tokyo_Reign.mp3").toExternalForm());
             backgroundMusicPlayer = new MediaPlayer(sound);
             backgroundMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         }
         backgroundMusicPlayer.play();
-    }*/
+    }
 
     public static void setCurrentStyle(String style) {
         currentStyle = style;
@@ -167,7 +167,7 @@ public class LoginMenu {
         return currentStyle;
     }
 
-   /* public static void setBackgroundMusicPlayer(MediaPlayer player) {
+    public static void setBackgroundMusicPlayer(MediaPlayer player) {
         backgroundMusicPlayer = player;
-    }*/
+    }
 }

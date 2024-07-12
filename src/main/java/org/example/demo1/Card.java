@@ -9,6 +9,8 @@ public abstract class Card implements Serializable {
     private String type;
     private int cost;
     private int level;
+    private String imagePath;
+
 
     public Card(String name, String type, int cost) {
         this.name = name;
@@ -35,6 +37,9 @@ public abstract class Card implements Serializable {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+    public String getImagePath() {
+        return imagePath;
     }
 
     @Override

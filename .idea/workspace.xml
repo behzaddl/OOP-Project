@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0de93f13-6edf-48c2-993c-5d51363cd299" name="Changes" comment="Menu Edition with specifics, Gameplay to be implemented">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/History.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/HistoryMenu.java" afterDir="false" />
+    <list default="true" id="0de93f13-6edf-48c2-993c-5d51363cd299" name="Changes" comment="Menu Edition with specifics, Gameplay to be implemented, History Added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/GamePlayGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/GameApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/GameApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/InerLoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/InerLoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/LoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/demo1/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/demo1/GamePlay.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +101,7 @@
       <workItem from="1720646775670" duration="11252000" />
       <workItem from="1720664492238" duration="3759000" />
       <workItem from="1720693768190" duration="4670000" />
+      <workItem from="1720770837405" duration="2989000" />
     </task>
     <task id="LOCAL-00001" summary="Here it is just to test">
       <option name="closed" value="true" />
@@ -168,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720668373560</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Menu Edition with specifics, Gameplay to be implemented, History Added">
+      <option name="closed" value="true" />
+      <created>1720770888650</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1720770888650</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +186,7 @@
     <MESSAGE value="Here it is just to test" />
     <MESSAGE value="Menu Edition without specifics, Gameplay to be implemented" />
     <MESSAGE value="Menu Edition with specifics, Gameplay to be implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu Edition with specifics, Gameplay to be implemented" />
+    <MESSAGE value="Menu Edition with specifics, Gameplay to be implemented, History Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu Edition with specifics, Gameplay to be implemented, History Added" />
   </component>
 </project>

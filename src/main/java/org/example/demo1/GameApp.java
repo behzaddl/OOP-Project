@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import static javafx.application.Application.launch;
 import static org.example.demo1.LoginMenu.backgroundMusicPlayer;
 
 public class GameApp extends Application {

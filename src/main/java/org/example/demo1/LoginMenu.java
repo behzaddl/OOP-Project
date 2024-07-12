@@ -49,10 +49,13 @@ public class LoginMenu {
         recoverPasswordButton.getStyleClass().add("button");
         Button settingsButton = new Button("Settings");
         settingsButton.getStyleClass().add("button");
+        Button mainMenuButton = new Button("Main Menu");
+        settingsButton.getStyleClass().add("button");
         Label countdownLabel = new Label();
         countdownLabel.getStyleClass().add("countdown-label");
 
-        vbox.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField, loginButton, recoverPasswordButton, settingsButton, countdownLabel);
+        vbox.getChildren().addAll(usernameLabel, usernameField, passwordLabel, passwordField,
+                loginButton, recoverPasswordButton, settingsButton, mainMenuButton, countdownLabel);
 
         Scene scene = new Scene(vbox, 770, 450);
         setStyleSheet(scene, currentStyle);
@@ -63,6 +66,7 @@ public class LoginMenu {
         loginButton.setOnAction(e -> handleLogin(primaryStage, usernameField.getText(), passwordField.getText(), loginButton, countdownLabel));
         recoverPasswordButton.setOnAction(e -> handlePasswordRecovery(primaryStage));
         settingsButton.setOnAction(e -> SettingsMenu.displaySettingsMenu(primaryStage, scene, backgroundMusicPlayer));
+        mainMenuButton.setOnAction(e -> GameApp.createMainMenuScene(primaryStage));
         playBackgroundMusic();
     }
 

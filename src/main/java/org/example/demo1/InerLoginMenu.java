@@ -33,7 +33,7 @@ public class InerLoginMenu {
         storeButton.setOnAction(e -> Store.displayStoreMenu(user, primaryStage));
         profileButton.setOnAction(e -> ProfileMenu.displayProfileMenu(user, primaryStage));
         adminLoginButton.setOnAction(e -> showAlert("Admin", "Admin functionality not implemented yet."));
-        historyButton.setOnAction(e -> showAlert("History", "History functionality not implemented yet."));
+        historyButton.setOnAction(e -> HistoryMenu.displayMenu(user, primaryStage));
         logoutButton.setOnAction(e -> {
             primaryStage.close();
             LoginMenu.displayLoginMenu(primaryStage);
